@@ -2495,7 +2495,7 @@ def port_to_tuple(port):
             pass
     return None
 
-def send_packet(test, port_id, pkt, count=1):
+def send_packet(dataplane, port_id, pkt, count=1):
     """
     Send a packet (or a number of packets) out of port_id
     port_id can either be a single integer (port_number on default device 0)
@@ -2506,8 +2506,8 @@ def send_packet(test, port_id, pkt, count=1):
     sent = 0
 
     for n in range(count):
-        test.before_send(pkt, device_number=device, port_number=port)
-        sent += test.dataplane.send(device, port, pkt)
+        #test.before_send(pkt, device_number=device, port_number=port)
+        sent += dataplane.send(device, port, pkt)
 
     return sent
 
